@@ -1,25 +1,20 @@
-import os
-
 class Config:
-
-    '''
-    General configuration parent class
-    '''
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:268231@localhost/shamiri'
+    
+    NEWS_BASE_URL_SOURCES = 'https://newsapi.org/v2/top-headlines/sources?apiKey={}'
+    NEWS_BASE_EVERYTHING_URL = 'https://newsapi.org/v2/everything?domains={}&apiKey={}'
+    NEWS_BASE_HEADLINES_URL = 'https://newsapi.org/v2/top-headlines?country=us&apiKey={}'
+    NEWS_BASE_SOURCE = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'
+    API_KEY = "6cc037b2e9984d0b995fb8d87f06d897"
+    SECRET_KEY = '123'
 
 class ProdConfig(Config):
-    '''
-    Production configuration child class
-    '''
     pass
+
 class DevConfig(Config):
-    '''
-    Development configuration child class
-    '''
     DEBUG = True
-    
-config_options = {
-    'development':DevConfig,
-    'production':ProdConfig
+
+
+config_options= {
+    'development': DevConfig,
+    'production': ProdConfig
 }
